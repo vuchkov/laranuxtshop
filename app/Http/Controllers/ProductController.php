@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest; // Add a request for validation
-//use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = $request->query('per_page', 10); // Allow customization of page size
+        $perPage = $request->query('per_page', 10);
         $query = Product::query();
-        $categoryId = $request->query('category_id');
+        /*$categoryId = $request->query('category_id');
         if ($categoryId) {
             $query->where('category_id', $categoryId);
-        }
+        }*/
         $products = $query->paginate($perPage);
         return response()->json($products);
     }

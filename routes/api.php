@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,6 +40,12 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::apiResource('session', SessionController::class)->middleware('auth:api');
+
+$actions = ['store', 'index', 'show', 'update', 'destroy'];
+
+Route::get('categories', CategoryController::class)->name('index');
+Route::resource('products', ProductController::class)->only($actions);
+//Route::get('{category}/products', [CategoryProductController::class, 'index'])->name('category/products.index');
 
 //Route::apiResource('products', 'ProductController');
 //Route::get('products', [ProductController::class, 'index'])->name('products.index');

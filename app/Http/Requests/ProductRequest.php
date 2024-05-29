@@ -2,16 +2,17 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Foundation\Http\Request;
+use Illuminate\Validation\Rule;
 
-class ProductRequest extends FormRequest
+class ProductRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true; // Adjust authorization logic if needed
     }
@@ -21,13 +22,17 @@ class ProductRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'sku' => 'required|string|unique:products,sku',
+            'sku' => [
+                'required',
+                'string',
+                Rule::unique('products', 'sku'),
+            ],
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0.01', // Adjust price format as needed
-            'category_id' => 'nullable|integer|exists:categories,id', // Add this if you have categories
+            'price' => 'required|numeric|min:0.01',
+            'category_id' => 'nullable|integer|exists:categories,id',
         ];
     }
 }
