@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 
@@ -12,10 +13,10 @@ class ProductController extends Controller
     {
         $perPage = $request->query('per_page', 10);
         $query = Product::query();
-        /*$categoryId = $request->query('category_id');
+        $categoryId = $request->query('category_id');
         if ($categoryId) {
             $query->where('category_id', $categoryId);
-        }*/
+        }
         $products = $query->paginate($perPage);
         return response()->json($products);
     }
@@ -25,7 +26,7 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    public function store(ProductRequest $request) // Use the ProductRequest for validation
+    public function store(ProductRequest $request): JsonResponse
     {
         $product = Product::create($request->validated());
         // ... further logic to handle product creation

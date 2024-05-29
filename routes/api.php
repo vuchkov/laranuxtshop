@@ -43,7 +43,7 @@ Route::apiResource('session', SessionController::class)->middleware('auth:api');
 
 $actions = ['store', 'index', 'show', 'update', 'destroy'];
 
-Route::get('categories', CategoryController::class)->name('index');
+Route::get('categories', [CategoryController::class, 'show'])->name('show');
 Route::resource('products', ProductController::class)->only($actions);
 //Route::get('{category}/products', [CategoryProductController::class, 'index'])->name('category/products.index');
 
