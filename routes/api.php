@@ -36,3 +36,5 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::apiResource('session', SessionController::class)->middleware('auth:api');
+
+Route::apiResource('products', 'ProductController');

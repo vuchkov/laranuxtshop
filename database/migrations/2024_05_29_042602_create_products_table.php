@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('sku', 100)->unique();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('unit_price', 8, 2);
+            $table->decimal('price', 8, 2);
             $table->unsignedBigInteger('category_id')->nullable(); // Foreign key
 
             $table->foreign('category_id')->references('id')->on('categories'); // If using separate categories table
