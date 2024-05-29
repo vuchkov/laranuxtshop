@@ -1,6 +1,6 @@
 # Assignment
 
-- Please read the `ASSIGNMENT.md` and `ROADMAP.md` to continue.
+- Please read the [ASSIGNMENT.md](https://github.com/vuchkov/laranuxtshop/blob/master/ASSIGNMENT.md) and `ROADMAP.md` for more info.
 
 ### Installation
 
