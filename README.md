@@ -33,3 +33,5 @@ php artisan make:migration create_orders_table
 php artisan make:migration create_categories_table
 ```
 - Run `php artisan migrate`
+- Create seeders: `php artisan make:seeder ProductsSeeder` (categories and orders)
+- Run `php artisan db:seed`
